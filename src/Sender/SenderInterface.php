@@ -1,15 +1,17 @@
 <?php
+
 /**
- * Created by PhpStorm.
- * User: felix
- * Date: 7/1/17
- * Time: 08:08
+ * @author Felix Huang <yelfivehuang@gmail.com>
  */
 
 namespace fk\messenger\Sender;
 
-
+/**
+ * All the public property can be set by
+ * calling [[Messenger::with]]
+ * @see \fk\messenger\Messenger::loadSender() for more detail
+ */
 interface SenderInterface
 {
-    public function send($mobile, $content);
+    public function send($mobile, $data);
 }
