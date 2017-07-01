@@ -1,0 +1,9 @@
+{
+  "name": "fk/messenger",
+  "autoload": {
+    "psr-4": {
+      "fk\\messenger\\": "./src",
+      "AliyunMNS\\": "./lib/AliCloud/AliyunMNS"
+    }
+  }
+}
