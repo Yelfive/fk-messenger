@@ -5,5 +5,8 @@
       "fk\\messenger\\": "./src",
       "AliyunMNS\\": "./lib/AliCloud/AliyunMNS"
     }
+  },
+  "require": {
+    "yunpian/yunpian-php-sdk" : "~1.0"
   }
 }

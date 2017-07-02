@@ -12,6 +12,7 @@ use fk\messenger\Sender\SenderInterface;
 class Messenger
 {
     const WITH_ALI_CLOUD = 'AliCloud';
+    const WITH_YUN_PIAN = 'YunPian';
 
     public $with;
 
@@ -26,6 +27,11 @@ class Messenger
         return $this;
     }
 
+    /**
+     * @param string $mobile
+     * @param array|string $content
+     * @return bool
+     */
     public function send($mobile, $content): bool
     {
         $sender = $this->loadSender();
