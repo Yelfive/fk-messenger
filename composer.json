@@ -1,12 +1,13 @@
 {
-  "name": "fk/messenger",
-  "autoload": {
-    "psr-4": {
-      "fk\\messenger\\": "./src",
-      "AliyunMNS\\": "./lib/AliCloud/AliyunMNS"
+    "name": "fk/messenger",
+    "autoload": {
+        "psr-4": {
+            "fk\\messenger\\": "./src",
+            "AliyunMNS\\": "./lib/AliCloud/AliyunMNS"
+        }
+    },
+    "require": {
+        "yunpian/yunpian-php-sdk": "~1.0",
+        "qcloudsms/qcloudsms_php": "0.1.*"
     }
-  },
-  "require": {
-    "yunpian/yunpian-php-sdk" : "~1.0"
-  }
 }
