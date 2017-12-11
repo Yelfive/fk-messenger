@@ -13,6 +13,7 @@ class Messenger
 {
     const WITH_ALI_CLOUD = 'AliCloud';
     const WITH_YUN_PIAN = 'YunPian';
+    const WITH_TENCENT = 'Tencent';
 
     public $with;
 
