@@ -1,5 +1,22 @@
 # FK Messenger
 
+**Usage**
+
+```php
+<?php
+
+/**
+ * @var string $mobile
+ * @var mixed $data
+ */
+$messenger = new \fk\messenger\Messenger();
+$messenger->with([
+    'sender' => \fk\messenger\Sender\SenderInterface::class,
+    // ... rest sender public properties
+])->send($mobile , $data);
+
+```
+
 ## Tencent
 
 ```php
