@@ -9,7 +9,7 @@ namespace fk\messenger\Sender;
 
 use Qcloud\Sms\SmsSingleSender;
 
-class Tencent implements SenderInterface
+class Tencent extends SenderContract
 {
 
     public $appId;
@@ -20,7 +20,7 @@ class Tencent implements SenderInterface
     {
         $sender = new SmsSingleSender($this->appId, $this->appKey);
         $result = $sender->send(0, '86', $mobile, $message);
-        $res = json_decode($result, true);
+        $this->result = $res = json_decode($result, true);
         return $res['result'] === 0;
     }
 }

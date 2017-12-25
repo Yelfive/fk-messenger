@@ -12,7 +12,7 @@ use AliyunMNS\Model\BatchSmsAttributes;
 use AliyunMNS\Model\MessageAttributes;
 use AliyunMNS\Requests\PublishMessageRequest;
 
-class AliCloud implements SenderInterface
+class AliCloud extends SenderContract
 {
 
     public $endPoint;

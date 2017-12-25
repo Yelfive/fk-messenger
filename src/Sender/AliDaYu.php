@@ -12,7 +12,7 @@ use TopClient;
 
 include __DIR__ . '/../../lib/AliDaYu/AutoLoader.php';
 
-class AliDaYu implements SenderInterface
+class AliDaYu extends SenderContract
 {
 
     public $appKey;

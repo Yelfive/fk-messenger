@@ -54,4 +54,9 @@ class Messenger
         }
         return $this->_sender = $sender;
     }
+
+    public function getResponse()
+    {
+        return $this->loadSender()->response();
+    }
 }

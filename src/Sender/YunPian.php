@@ -7,11 +7,10 @@
 
 namespace fk\messenger\Sender;
 
-use fk\messenger\SendFailedException;
 use Yunpian\Sdk\Constant\Code;
 use Yunpian\Sdk\YunpianClient;
 
-class YunPian implements SenderInterface
+class YunPian extends SenderContract
 {
     public $result;
 
@@ -22,10 +21,19 @@ class YunPian implements SenderInterface
         $client = YunpianClient::create($this->apiKey);
 
         $param = [YunpianClient::MOBILE => $mobile, YunpianClient::TEXT => $data];
+        /** @var \Yunpian\Sdk\Model\Result $result */
         $result = $client->sms()->single_send($param);
+        $this->result = $result->data();
 
-        if ($result->code() === Code::OK) return true;
+        return $result->code() === Code::OK;
+    }
 
-        throw new SendFailedException($this, $result);
+    /**
+     * Get last response, may be error, may be success
+     * @return array
+     */
+    public function response()
+    {
+        return $this->result;
     }
 }
