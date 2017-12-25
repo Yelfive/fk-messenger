@@ -47,7 +47,7 @@ class Messenger
         if ($this->_sender instanceof SenderInterface) return $this->_sender;
         $with = $this->with;
         $senderClass = $with['sender'];
-        unset($with['class']);
+        unset($with['sender']);
         $sender = new $senderClass;
         foreach ($with as $k => $v) {
             $sender->$k = $v;
