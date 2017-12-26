@@ -21,6 +21,6 @@ class Tencent extends SenderContract
         $sender = new SmsSingleSender($this->appId, $this->appKey);
         $result = $sender->send(0, '86', $mobile, $message);
         $this->result = $res = json_decode($result, true);
-        return $res['result'] === 0;
+        return isset($result) && $res['result'] === 0;
     }
 }
