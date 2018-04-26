@@ -46,7 +46,7 @@ class AliCloud extends SenderContract
         return $this->getClient()->getTopicRef($this->topic);
     }
 
-    public function send($mobile, $data)
+    public function send($mobile, $message)
     {
         /**
          * Step 2. 获取主题引用
@@ -56,12 +56,12 @@ class AliCloud extends SenderContract
          * Step 3. 生成SMS消息属性
          */
         // 3.1 设置发送短信的签名（SMSSignName）和模板（SMSTemplateCode）
-        $batchSmsAttributes = new BatchSmsAttributes($this->signature, $data['template']);
+        $batchSmsAttributes = new BatchSmsAttributes($this->signature, $message['template']);
         // 3.2 （如果在短信模板中定义了参数）指定短信模板中对应参数的值
 //        $batchSmsAttributes->addReceiver("YourReceiverPhoneNumber1", array("YourSMSTemplateParamKey1" => "value1"));
 //        $batchSmsAttributes->addReceiver("YourReceiverPhoneNumber2", array("YourSMSTemplateParamKey1" => "value1"));
 
-        $batchSmsAttributes->addReceiver($mobile, $data['params'] ?? []);
+        $batchSmsAttributes->addReceiver($mobile, $message['params'] ?? []);
 
         $messageAttributes = new MessageAttributes(array($batchSmsAttributes));
         /**
@@ -69,7 +69,7 @@ class AliCloud extends SenderContract
          *
          * 注：目前暂时不支持消息内容为空，需要指定消息内容，不为空即可。
          */
-        $messageBody = $data['message']??'';
+        $messageBody = $message['message']??'';
         /**
          * Step 5. 发布SMS消息
          */

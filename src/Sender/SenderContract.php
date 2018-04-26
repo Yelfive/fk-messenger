@@ -14,8 +14,20 @@ abstract class SenderContract implements SenderInterface
      */
     protected $result;
 
+    /**
+     * @var string Signature of a sms message
+     */
+    public $signature;
+
     public function response()
     {
         return $this->result;
+    }
+
+    public function sign(&$message)
+    {
+        if (is_string($message) && $this->signature && false === strpos($message, '【')) {
+            $message = "【{$this->signature}】$message";
+        }
     }
 }

@@ -15,10 +15,10 @@ interface SenderInterface
 {
     /**
      * @param string $mobile
-     * @param mixed $data This field differs from senders, some may want a string message, some may desire an array parameters
+     * @param mixed $message This field differs from senders, some may want a string message, some may desire an array parameters
      * @return bool
      */
-    public function send($mobile, $data);
+    public function send($mobile, $message);
 
     /**
      * Get last response, may be error, may be success

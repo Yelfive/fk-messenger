@@ -7,6 +7,7 @@
 
 namespace fk\messenger;
 
+use fk\messenger\Sender\SenderContract;
 use fk\messenger\Sender\SenderInterface;
 
 class Messenger
@@ -36,11 +37,12 @@ class Messenger
     public function send($mobile, $content): bool
     {
         $sender = $this->loadSender();
+        $sender->sign($content);
         return $sender->send($mobile, $content);
     }
 
     /**
-     * @return SenderInterface
+     * @return SenderContract
      */
     protected function loadSender()
     {

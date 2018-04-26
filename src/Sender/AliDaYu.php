@@ -35,16 +35,16 @@ class AliDaYu extends SenderContract
         return $this->_client = new TopClient($this->appKey, $this->secretKey);
     }
 
-    public function send($mobile, $data)
+    public function send($mobile, $message)
     {
         $client = $this->getClient();
         $request = new AlibabaAliqinFcSmsNumSendRequest;
-        if (!empty($data['extend'])) $request->setExtend($data['extend']);
+        if (!empty($message['extend'])) $request->setExtend($message['extend']);
         $request->setSmsType('normal');
         $request->setSmsFreeSignName($this->signature);
-        if (!empty($data['params'])) $request->setSmsParam(json_encode($data['params'], JSON_UNESCAPED_UNICODE));
+        if (!empty($message['params'])) $request->setSmsParam(json_encode($message['params'], JSON_UNESCAPED_UNICODE));
         $request->setRecNum($mobile);
-        $request->setSmsTemplateCode($data['template']);
+        $request->setSmsTemplateCode($message['template']);
         $response = $client->execute($request);
         var_dump($response);
         die;

@@ -16,11 +16,11 @@ class YunPian extends SenderContract
 
     public $apiKey;
 
-    public function send($mobile, $data)
+    public function send($mobile, $message)
     {
         $client = YunpianClient::create($this->apiKey);
 
-        $param = [YunpianClient::MOBILE => $mobile, YunpianClient::TEXT => $data];
+        $param = [YunpianClient::MOBILE => $mobile, YunpianClient::TEXT => $message];
         /** @var \Yunpian\Sdk\Model\Result $result */
         $result = $client->sms()->single_send($param);
         $this->result = $result->data();
