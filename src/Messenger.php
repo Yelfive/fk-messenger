@@ -23,6 +23,8 @@ class Messenger
      */
     private $_sender;
 
+    protected $content;
+
     public function with(array $with)
     {
         $this->with = $with;
@@ -38,6 +40,7 @@ class Messenger
     {
         $sender = $this->loadSender();
         $sender->sign($content);
+        $this->content = $content;
         return $sender->send($mobile, $content);
     }
 
@@ -46,7 +49,7 @@ class Messenger
      */
     protected function loadSender()
     {
-        if ($this->_sender instanceof SenderInterface) return $this->_sender;
+        if ($this->_sender instanceof SenderContract) return $this->_sender;
         $with = $this->with;
         $senderClass = $with['sender'];
         unset($with['sender']);
@@ -60,5 +63,10 @@ class Messenger
     public function getResponse()
     {
         return $this->loadSender()->response();
+    }
+
+    public function getContent()
+    {
+        return $this->content;
     }
 }
